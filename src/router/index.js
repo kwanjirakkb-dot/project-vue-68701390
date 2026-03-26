@@ -54,8 +54,15 @@ const routes = [
     name: 'register',
 
     component: () => import( '../views/Register.vue')
+  },
+  {
+    path: '/add_employee',
+    name: 'add_employee',
+
+    component: () => import( '../views/add_employee.vue')
   }
 ]
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

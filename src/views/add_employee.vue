@@ -5,38 +5,30 @@
                 <div class="card shadow-lg p-4">
                     <h2 class="text-center mb-4">ฟอร์มลงทะเบียน</h2>
 
-        <form @submit.prevent="addCustomer">
+        <form @submit.prevent="addEmployee">
 
           <div class="mb-3">
-            <label class="form-label">ชื่อ</label>
+            <label class="form-label">ชื่อ-นามสกุล</label>
             <input type="text" class="form-control"
-              v-model="form.firstName" placeholder="ชื่อ" required>
+              v-model="form.full_name" placeholder="ชื่อ-นามสกุล" required>
+          </div>
+
+          <div>
+          <select class="form-select" v-model="form.department">
+            <option selected>เลือกแผนก</option>
+            <option value="คอมพิวเตอร์">คอมพิวเตอร์</option>
+            <option value="บัญชี">บัญชี</option>
+            <option value="บุคคล">บุคคล</option>
+          </select>
           </div>
 
           <div class="mb-3">
-            <label class="form-label">นามสกุล</label>
+            <label class="form-label">เงินเดือน</label>
             <input type="text" class="form-control"
-              v-model="form.lastName" placeholder="นามสกุล" required>
+              v-model="form.salary" placeholder="เงินเดือน" required>
           </div>
 
-          <div class="mb-3">
-            <label class="form-label">เบอร์โทรศัพท์</label>
-            <input type="text" class="form-control"
-              v-model="form.phone" placeholder="เบอร์โทรศัพท์" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Username</label>
-            <input type="text" class="form-control"
-              v-model="form.username" placeholder="username" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control"
-              v-model="form.password" placeholder="password" required>
-          </div>
-
+          
           <button type="submit" class="btn btn-primary w-100">
             บันทึก
           </button>
@@ -60,20 +52,20 @@ export default {
   data() {
     return {
       form: {
-        firstName: '',
-        lastName: '',
-        phone: '',
-        username: '',
-        password: ''
+        full_name: '',
+        department: '',
+        salary: '',
+        active: "1"
+       
       },
       message: '',
       status: ''
     }
   },
   methods: {
-    async addCustomer() {
+    async addEmployee() {
       try {
-        const res = await fetch('http://localhost/project-vue-68701390/php_api/add_customer.php', {
+        const res = await fetch('http://localhost/project-vue-68701390/php_api/add_employee.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -89,11 +81,11 @@ export default {
         // เคลียร์ฟอร์ม
         if (result.status === 'success') {
           this.form = {
-            firstName: '',
-            lastName: '',
-            phone: '',
-            username: '',
-            password: ''
+            full_name: '',
+            department: '',
+            salary: '',
+
+            
           };
         }
 
