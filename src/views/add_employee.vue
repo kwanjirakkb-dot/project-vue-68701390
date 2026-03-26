@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow-lg p-4">
-                    <h2 class="text-center mb-4">ฟอร์มลงทะเบียน</h2>
+                    <h2 class="text-center mb-4">ฟอร์มลงทะเบียนพนักงาน</h2>
 
         <form @submit.prevent="addEmployee">
 

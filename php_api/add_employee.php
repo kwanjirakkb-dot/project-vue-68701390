@@ -5,6 +5,13 @@ include 'condb.php';
 // รับค่า JSON จาก client
 $data = json_decode(file_get_contents("php://input"), true);
 
+
+// เช็คว่าข้อมูลครบถ้วนหรือไม่
+    $full_name = $data['full_name'] ?? '';
+    $department = $data['department'] ?? '';
+    $salary = $data['salary'] ?? '';
+    $active = $data['active'] ?? '';
+
 // เช็คว่าข้อมูลครบถ้วนหรือไม่
 if (
     empty($data['full_name']) ||
